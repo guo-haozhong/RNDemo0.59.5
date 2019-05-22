@@ -4312,6 +4312,14 @@ range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/range-parser/download/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
+raven-for-redux@^1.3.1:
+  version "1.4.0"
+  resolved "https://registry.npm.taobao.org/raven-for-redux/download/raven-for-redux-1.4.0.tgz#37cf4fc7bdde227ce5cc8fa29942f21ea517b7fb"
+
+raven-js@^3.27.1:
+  version "3.27.1"
+  resolved "https://registry.npm.taobao.org/raven-js/download/raven-js-3.27.1.tgz#e187a12982061908ccbf935af0640c9043d7d666"
+
 rc@^1.2.7:
   version "1.2.8"
   resolved "https://registry.npm.taobao.org/rc/download/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -5440,10 +5448,6 @@ tr46@^1.0.1:
   resolved "https://registry.npm.taobao.org/tr46/download/tr46-1.0.1.tgz#a8b13fd6bfd2489519674ccde55ba3693b706d09"
   dependencies:
     punycode "^2.1.0"
-
-transform-runtime@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.npm.taobao.org/transform-runtime/download/transform-runtime-0.0.0.tgz#e714d9b69211dd9537939d50e3aa5788c442b85c"
 
 trim-right@^1.0.1:
   version "1.0.1"
