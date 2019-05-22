@@ -17,7 +17,9 @@ import {
   ToastAndroid
 
 } from 'react-native';
-
+import {
+  NavigationActions
+} from 'react-navigation'
 //注册路由
 import {
   reduxifyNavigator,

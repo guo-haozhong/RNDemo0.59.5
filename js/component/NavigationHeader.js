@@ -10,6 +10,8 @@ import {
 import {
     Header
 } from 'react-navigation'
+class MyHeader extends Header {}
+
 export default (params) => {
     const headerStyle = Platform.OS === 'android' ? {
         backgroundColor: '#fff',
@@ -48,23 +50,25 @@ export default (params) => {
             return (
                 <View>
                     {StatusBarWithDarkContent}
-                    <Header {...screenProps}/>
+                    <MyHeader {...screenProps}/>
                 </View>
             )
         }
     }
 }
 
-//白字状态栏
 export const StatusBarWithLightContent = (
     <StatusBar
+        translucent={true}
+        backgroundColor={'#00000000'}
         barStyle={'light-content'}
     />
 )
 
-//黑字状态栏
 export const StatusBarWithDarkContent = (
     <StatusBar
+        translucent={true}
+        backgroundColor={'#00000000'}
         barStyle={'dark-content'}
     />
 )
@@ -72,7 +76,7 @@ export const StatusBarWithDarkContent = (
 export const MainTabBarHeader = (screenProps) => {
     const {scene} = screenProps
     const routeName = scene.route.routes[scene.route.index].routeName
-    // if(routeName === 'moneyDetail') {
+    // if(routeName === 'home') {
     //     return StatusBarWithDarkContent
     // }
  
