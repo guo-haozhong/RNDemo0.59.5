@@ -10,6 +10,7 @@ import {
 let { width, height } = Dimensions.get("window");
 
 import {
+
     resetToMainAction,
 } from '../../common/NaivgateUtil'
 

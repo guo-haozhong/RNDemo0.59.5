@@ -33,6 +33,48 @@ export default createBottomTabNavigator({
             ),
         }),
     },
+    nearby: {
+        screen: HomeScreen,
+        navigationOptions: ({ navigation }) => ({
+            title: '附近',
+            header: StatusBarWithDarkContent,
+            tabBarIcon: ({ focused }) => (
+                <Image
+                    style={{ width: 26, height: 26 }}
+                    resizeMode={'cover'}
+                    source={focused ? require('../../images/tab/tabbar_nearby_selected.png') : require('../../images/tab/tabbar_nearby.png')}
+                />
+            ),
+        }),
+    },
+    discover: {
+        screen: HomeScreen,
+        navigationOptions: ({ navigation }) => ({
+            title: '逛一逛',
+            header: StatusBarWithDarkContent,
+            tabBarIcon: ({ focused }) => (
+                <Image
+                    style={{ width: 26, height: 26 }}
+                    resizeMode={'cover'}
+                    source={focused ? require('../../images/tab/tabbar_discover_selected.png') : require('../../images/tab/tabbar_discover.png')}
+                />
+            ),
+        }),
+    },
+    order: {
+        screen: HomeScreen,
+        navigationOptions: ({ navigation }) => ({
+            title: '订单',
+            header: StatusBarWithDarkContent,
+            tabBarIcon: ({ focused }) => (
+                <Image
+                    style={{ width: 26, height: 26 }}
+                    resizeMode={'cover'}
+                    source={focused ? require('../../images/tab/tabbar_order_selected.png') : require('../../images/tab/tabbar_order.png')}
+                />
+            ),
+        }),
+    },
     mine: {
         screen: HomeScreen,
         navigationOptions: ({ navigation }) => ({
