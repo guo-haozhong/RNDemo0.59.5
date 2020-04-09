@@ -21,7 +21,8 @@ export default class HomeScreen extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.root}>
+                <Text style={{}}>Hello,world!</Text>
             </View>
         )
     }
@@ -30,5 +31,11 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
     root: {
         flex: 1,
+        justifyContent:'center',
+        alignItems:"center"
     },
+    text:{
+        color:"#666",
+        fontSize:16
+    }
 })

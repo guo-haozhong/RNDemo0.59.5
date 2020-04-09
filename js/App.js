@@ -28,7 +28,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import AppNavigator from './AppNavigator'
 import store, { persistor } from './configureStore'
 import { connect, Provider } from 'react-redux'
-import {exitApp} from '../js/native/NativeCommonModule'
+import { exitApp } from '../js/native/NativeCommonModule'
 //引入全局值
 require('./common/GlobalValue')
 
@@ -58,7 +58,7 @@ class PersistApp extends Component {
     //退出应用
     if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
       //最近2秒内按过back键，可以退出应用。
-      
+
       return exitApp();
     }
 
