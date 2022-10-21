@@ -8,7 +8,7 @@ import {
   Pressable,
   Alert,
 } from 'react-native';
-import { initData } from './data/data'
+
 import SwipeableFlatList from 'react-native-swipeable-list';
 
 const darkColors = {
@@ -58,7 +58,78 @@ function renderItemSeparator() {
 }
 
 const App = () => {
-
+const initData = [
+    {
+      name: 'Raphael',
+      subject: 'amet lorem semper auctor. Mauris vel turpis.',
+      date: '2022-10-21 13:00',
+      text: 'mollis dui, in sodales elit erat vitae risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend egestas. Sed',
+      id: 1,
+    },
+    {
+      name: 'Aquila',
+      subject: 'quis, pede. Praesent',
+      date: '2022-10-21 14:05',
+      text: 'Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac',
+      id: 11,
+    },
+    {
+      name: 'Geraldine',
+      subject: 'purus sapien, gravida non,',
+      date: '2022-10-21 14:30',
+      text: 'pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum',
+      id: 21,
+    },
+    {
+      name: 'Geraldine',
+      subject: 'nec enim. Nunc ut erat. Sed nunc',
+      date: 'Thu, 5th, 2020',
+      text: 'Ut tincidunt vehicula risus. Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero mauris, aliquam eu, accumsan sed, facilisis vitae, orci. Phasellus dapibus quam quis diam.',
+      id: 31,
+    },
+    {
+      name: 'Mariko',
+      subject: 'lobortis mauris. Suspendisse',
+      date: 'Sat, 25th, 2019',
+      text: 'mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed',
+      id: 41,
+    },
+    {
+      name: 'Nicole',
+      subject: 'egestas.',
+      date: 'Tue, 8th, 2020',
+      text: 'vitae mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod',
+      id: 51,
+    },
+    {
+      name: 'Solomon',
+      subject: 'ac mattis ornare, lectus',
+      date: 'Fri, 10th, 2019',
+      text: 'nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci',
+      id: 61,
+    },
+    {
+      name: 'Diana',
+      subject: 'Suspendisse',
+      date: 'Sun, 16th, 2018',
+      text: 'dignissim magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper,',
+      id: 71,
+    },
+    {
+      name: 'Hammett',
+      subject: 'eu enim. Etiam imperdiet dictum',
+      date: 'Mon, 11th, 2019',
+      text: 'molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio.',
+      id: 81,
+    },
+    {
+        name: 'Brenna',
+        subject: 'neque. Sed eget lacus. Mauris non',
+        date: 'Wed, 22nd, 2019',
+        text: 'sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus pede, ultrices a, auctor non, feugiat nec, diam.',
+        id: 91,
+      },
+  ]
   const [data, setData] = useState(initData);
 
   const deleteItem = itemId => {
