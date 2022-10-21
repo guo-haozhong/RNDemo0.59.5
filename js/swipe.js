@@ -91,6 +91,17 @@ const App = () => {
 
   }
   useEffect(() => {
+//     const { d, h, m, s } = useCountDown(
+//     {
+//       differTime: props.differTime, //ms 两个时间戳的差
+//     },
+//     () => {
+//       if (!props.showBtn) {
+//         //倒计时结束 隐藏弹框
+//         props.onResend?.()
+//       }
+//     }
+//    )
     //监听
     const reminderListener = DeviceEventEmitter.addListener(EVENT_AMOUNT_CHANGED, onReminderListener)
     return reminderListener.remove()
