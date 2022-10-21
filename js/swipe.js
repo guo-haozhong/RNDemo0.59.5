@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,10 +10,12 @@ import {
   Modal,
   TouchableHighlight,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  DeviceEventEmitter
 } from 'react-native';
 import { initData } from './data/data'
 import SwipeableFlatList from 'react-native-swipeable-list';
+import moment from 'moment'
 const WIDTH = Dimensions.get('window').width
 
 const darkColors = {
@@ -74,8 +76,37 @@ const App = () => {
     return setData(filteredState);
   };
 
-  const archiveItem = date => {
-    const starttime = ''
+  const onReminderListener = (data) => {
+    console.log('data==', data);
+    if (starttime > curtime) {
+      //不提示
+    } else {
+      //如果当前时间<开始时间 && 开始时间-当前时间==5 reminder
+      if (starttime - curtime == 5) {
+        //提示
+      }else{
+        //循环 监听时间
+      }
+    }
+
+  }
+  useEffect(() => {
+    //监听
+    const reminderListener = DeviceEventEmitter.addListener(EVENT_AMOUNT_CHANGED, onReminderListener)
+    return reminderListener.remove()
+  }, [])
+  const archiveItem = starttime => {
+    DeviceEventEmitter.emit('reminder', { time: '2022-10-21 17:10' })
+
+    const curtime = moment(new Date()).format('YYYY-MM-DD HH:mm')
+    const startTime = moment(starttime)
+    if (moment(curtime).isBefore(starttime)) {
+      console.log(startTime.diff(curtime, 'minute'));
+      if ((startTime.diff(curtime, 'minute')) == 5) {
+        console.log('true');
+      }
+    }
+
     setModalVisible(true)
     // Alert.alert(
     //   'DISHONESTY ALERT',
@@ -170,9 +201,9 @@ const App = () => {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={[styles.modalText,{marginTop:10}]}>title</Text>
+              <Text style={[styles.modalText, { marginTop: 10 }]}>title</Text>
               <Text style={styles.modalText}>Hello World!</Text>
-              <View style={{ flexDirection: 'row',marginTop:20 }}>
+              <View style={{ flexDirection: 'row', marginTop: 20 }}>
                 <TouchableOpacity
                   style={{ ...styles.openButton, backgroundColor: "#123456" }}
                   onPress={() => {
@@ -182,7 +213,7 @@ const App = () => {
                   <Text style={styles.textStyle}>Cancel</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={{ ...styles.openButton, backgroundColor: "#2196F3",marginLeft:40 }}
+                  style={{ ...styles.openButton, backgroundColor: "#2196F3", marginLeft: 40 }}
                   onPress={() => {
                     setModalVisible(!modalVisible);
                   }}
@@ -321,7 +352,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    width:90,
+    width: 90,
   },
   textStyle: {
     color: "white",
