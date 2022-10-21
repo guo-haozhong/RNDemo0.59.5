@@ -7,9 +7,14 @@ import {
   StatusBar,
   Pressable,
   Alert,
+  Modal,
+  TouchableHighlight,
+  Dimensions,
+  TouchableOpacity
 } from 'react-native';
-
+import { initData } from './data/data'
 import SwipeableFlatList from 'react-native-swipeable-list';
+const WIDTH = Dimensions.get('window').width
 
 const darkColors = {
   background: '#121212',
@@ -58,79 +63,9 @@ function renderItemSeparator() {
 }
 
 const App = () => {
-const initData = [
-    {
-      name: 'Raphael',
-      subject: 'amet lorem semper auctor. Mauris vel turpis.',
-      date: '2022-10-21 13:00',
-      text: 'mollis dui, in sodales elit erat vitae risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend egestas. Sed',
-      id: 1,
-    },
-    {
-      name: 'Aquila',
-      subject: 'quis, pede. Praesent',
-      date: '2022-10-21 14:05',
-      text: 'Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac',
-      id: 11,
-    },
-    {
-      name: 'Geraldine',
-      subject: 'purus sapien, gravida non,',
-      date: '2022-10-21 14:30',
-      text: 'pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum',
-      id: 21,
-    },
-    {
-      name: 'Geraldine',
-      subject: 'nec enim. Nunc ut erat. Sed nunc',
-      date: 'Thu, 5th, 2020',
-      text: 'Ut tincidunt vehicula risus. Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero mauris, aliquam eu, accumsan sed, facilisis vitae, orci. Phasellus dapibus quam quis diam.',
-      id: 31,
-    },
-    {
-      name: 'Mariko',
-      subject: 'lobortis mauris. Suspendisse',
-      date: 'Sat, 25th, 2019',
-      text: 'mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed',
-      id: 41,
-    },
-    {
-      name: 'Nicole',
-      subject: 'egestas.',
-      date: 'Tue, 8th, 2020',
-      text: 'vitae mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod',
-      id: 51,
-    },
-    {
-      name: 'Solomon',
-      subject: 'ac mattis ornare, lectus',
-      date: 'Fri, 10th, 2019',
-      text: 'nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci',
-      id: 61,
-    },
-    {
-      name: 'Diana',
-      subject: 'Suspendisse',
-      date: 'Sun, 16th, 2018',
-      text: 'dignissim magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper,',
-      id: 71,
-    },
-    {
-      name: 'Hammett',
-      subject: 'eu enim. Etiam imperdiet dictum',
-      date: 'Mon, 11th, 2019',
-      text: 'molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio.',
-      id: 81,
-    },
-    {
-        name: 'Brenna',
-        subject: 'neque. Sed eget lacus. Mauris non',
-        date: 'Wed, 22nd, 2019',
-        text: 'sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus pede, ultrices a, auctor non, feugiat nec, diam.',
-        id: 91,
-      },
-  ]
+
   const [data, setData] = useState(initData);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const deleteItem = itemId => {
     // ! Please don't do something like this in production. Use proper state management.
@@ -139,8 +74,9 @@ const initData = [
     return setData(filteredState);
   };
 
-  const archiveItem = itemId => {
+  const archiveItem = date => {
     const starttime = ''
+    setModalVisible(true)
     // Alert.alert(
     //   'DISHONESTY ALERT',
     //   "Not gonna Archive it. We're actually are gonna just delete it.",
@@ -181,17 +117,17 @@ const initData = [
   const QuickActions = (index, qaItem) => {
     return (
       <View style={styles.qaContainer}>
-        <View style={[styles.button, styles.button1]}>
-          <Pressable onPress={() => archiveItem(qaItem.id)}>
+        <View style={[styles.button,]}>
+          <Pressable onPress={() => archiveItem(qaItem.date)}>
             <Text style={[styles.buttonText, styles.button1Text]}>Reminder</Text>
           </Pressable>
         </View>
-        <View style={[styles.button, styles.button2]}>
+        <View style={[styles.button]}>
           <Pressable onPress={() => snoozeItem(qaItem.id)}>
             <Text style={[styles.buttonText, styles.button2Text]}>Snooze</Text>
           </Pressable>
         </View>
-        <View style={[styles.button, styles.button3]}>
+        <View style={[styles.button,]}>
           <Pressable onPress={() => deleteItem(qaItem.id)}>
             <Text style={[styles.buttonText, styles.button3Text]}>Delete</Text>
           </Pressable>
@@ -224,6 +160,39 @@ const initData = [
           onEndReachedThreshold={0.0001}
           onEndReached={onEndReached}
         />
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={[styles.modalText,{marginTop:10}]}>title</Text>
+              <Text style={styles.modalText}>Hello World!</Text>
+              <View style={{ flexDirection: 'row',marginTop:20 }}>
+                <TouchableOpacity
+                  style={{ ...styles.openButton, backgroundColor: "#123456" }}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <Text style={styles.textStyle}>Cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={{ ...styles.openButton, backgroundColor: "#2196F3",marginLeft:40 }}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <Text style={styles.textStyle}>ok</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </SafeAreaView>
     </>
   );
@@ -323,6 +292,46 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: darkColors.backgroundColor,
   },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "gray",
+    borderRadius: 20,
+    // padding: 35,
+    width: WIDTH - 80,
+    height: 160,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    width:90,
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
 });
 
 export default App;
